@@ -7,5 +7,24 @@
         <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=vuejs" id="_carbonads_js"></script>
     </div>
     <%- page.content %>
+<<<<<<< HEAD
     <div class="footer">Hai scovato un errore o vuoi semplicemente contribuire alla documentazione? <a href="https://github.com/vuejs/vuejs.org" target="_blank">Forkalo su Github</a>!</div>
+=======
+    <% if (page.type === 'guide') { %>
+      <div class="guide-links">
+        <% site.pages.find({ type: page.type, order: page.order - 1 }).each(function (page) { %>
+          <span>← <a href="<%- url_for(page.path) %>"><%- page.title %></a></span>
+        <% }) %>
+        <% site.pages.find({ type: page.type, order: page.order + 1 }).each(function (page) { %>
+          <span style="float:right"><a href="<%- url_for(page.path) %>"><%- page.title %></a> →</span>
+        <% }) %>
+      </div>
+    <% } %>
+    <div class="footer">
+      Caught a mistake or want to contribute to the documentation?
+      <a href="https://github.com/vuejs/vuejs.org/blob/master/src/<%- page.path.replace(/\.html$/, '.md') %>" target="_blank">
+        Edit this page on Github!
+      </a>
+    </div>
+>>>>>>> upstream/master
 </div>

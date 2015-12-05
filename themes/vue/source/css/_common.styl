@@ -28,10 +28,10 @@ code, pre
     -moz-osx-font-smoothing initial
 
 code
-    color #525252
-    padding 2px 6px
+    color #e96900
+    padding 3px 5px
     margin 0 2px
-    border 1px solid #e6e6e6
+    border-radius 2px
     white-space nowrap
 
 em
@@ -61,21 +61,20 @@ a.button
     padding 0
     background-color $codebg
     padding .8em .8em .4em
-    box-shadow 0 1px 1px rgba(0,0,0,0.125)
     line-height 1.1em
+    border-radius $radius
     table, tr, td
         width 100%
         border-collapse collapse
         padding 0
         margin 0
-    pre
-        padding 1.2em 1.5em 
-        margin 0
     .gutter
         width 1.5em
     .code
         pre
-            padding-left .5em
+            padding 1.2em 1.4em
+            line-height 1.5em
+            margin 0
     &.html, &.js, &.bash, &.css
         .code:after
             position absolute
@@ -121,3 +120,78 @@ a.button
     .carbon-poweredby
         color #aaa
         font-weight normal
+
+#nav
+    .nav-link
+        cursor pointer
+    .nav-dropdown-container
+        .nav-link
+            &:hover
+                border-bottom none
+        &:hover
+            .nav-dropdown
+                display block
+    .nav-dropdown
+        display none
+        position absolute
+        top 100%
+        left 0
+        background-color #fff
+        padding 10px 0
+        border 1px solid #ddd
+        border-bottom-color #ccc
+        text-align left
+        border-radius 4px
+        li
+            line-height 1.8em
+            margin 0
+            display block
+        a
+            color $light
+            font-size .9em
+            display block
+            padding 0 30px 0 20px
+            &:hover
+                color $green
+    .arrow
+        display inline-block
+        vertical-align middle
+        margin-top -1px
+        margin-left 6px
+        margin-right -14px
+        width 0
+        height 0
+        border-left 4px solid transparent
+        border-right 4px solid transparent
+        border-top 5px solid #ccc
+
+#donate
+    height 24px
+    .wrapper
+        vertical-align top
+        height 20px
+        border 1px solid #d4d4d4
+        display inline-block
+        box-sizing border-box
+        line-height 16px
+        border-radius 3px
+        cursor pointer
+        background-image linear-gradient(to bottom,#fcfcfc 0,#eee 100%)
+        position relative
+        width 72px
+        &:hover
+            border-color #ccc
+            background-image linear-gradient(to bottom,#eee 0,#ddd 100%)
+        img
+            width 14px
+            height 14px
+            position absolute
+            top 3px
+            left 5px
+        a
+            font 700 11px/14px 'Helvetica Neue', Helvetica, Arial, sans-serif
+            color #333333
+            text-shadow 0 1px 0 #fff
+            position absolute
+            top 2px
+            left 24px
