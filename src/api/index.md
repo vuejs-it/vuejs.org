@@ -167,6 +167,8 @@ type: api
   - `{String} key`
   - `{*} value`
 
+- **Returns:** the set value.
+
 - **Usage:**
 
   Set a property on an object. If the object is reactive, ensure the property is created as a reactive property and trigger view updates. This is primarily used to get around the limitation that Vue cannot detect property additions.
@@ -980,6 +982,8 @@ type: api
 
   Watch an expression or a computed function on the Vue instance for changes. The callback gets called with the new value and the old value. The expression can be a single keypath or any valid binding expressions.
 
+<p class="tip">Note: when mutating (rather than replacing) an Object or an Array, the old value will be the same as new value because they reference the same Object/Array. Vue doesn't keep a copy of the pre-mutate value.</p>
+
 - **Example:**
 
   ``` js
@@ -1544,6 +1548,10 @@ type: api
 
   When used on a normal element, it listens to **native DOM events** only. When used on a custom element component, it also listens to **custom events** emitted on that child component.
 
+  When listening to native DOM events, the method receives the native event as the only argument. If using inline statement, the statement has access to the special `$event` property: `v-on:click="handle('ok', $event)"`.
+
+  **1.0.11+** When listening the custom events, inline statements have access to the special `$arguments` property, which is an array of the additional arguments passed to the child components' `$emit` call.
+
 - **Example:**
 
   ``` html
@@ -1551,7 +1559,7 @@ type: api
   <button v-on:click="doThis"></button>
 
   <!-- inline statement -->
-  <button v-on:click="doThat('hello')"></button>
+  <button v-on:click="doThat('hello', $event)"></button>
 
   <!-- shorthand -->
   <button @click="doThis"></button>
@@ -1579,6 +1587,9 @@ type: api
 
   ``` html
   <my-component @my-event="handleThis"></my-component>
+
+  <!-- inline statement -->
+  <my-component @my-event="handleThis(123, $arguments)"></my-component>
   ```
 
 - **See also:** [Methods and Event Handling](/guide/events.html)

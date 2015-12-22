@@ -23,6 +23,8 @@ To use this constructor as a component, you need to **register** it with `Vue.co
 Vue.component('my-component', MyComponent)
 ```
 
+<p class="tip">Note that Vue.js does not enforce the [W3C rules](http://www.w3.org/TR/custom-elements/#concepts) for custom tag-names (all-lowercase, must contain a hyphen) though following this convention is considered good practice.</p>
+
 Once registered, the component can now be used in a parent instance's template as a custom element, `<my-component>`. Make sure the component is registered **before** you instantiate your root Vue instance. Here's the full example:
 
 ``` html
@@ -314,6 +316,13 @@ Vue.component('example', {
     propF: {
       validator: function (value) {
         return value > 10
+      }
+    },
+    // coerce function (new in 1.0.12)
+    // cast the value before setting it on the component
+    propG: {
+      coerce: function (val) {
+        return val + '' // cast the value to string
       }
     }
   }
